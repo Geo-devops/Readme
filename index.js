@@ -10,6 +10,12 @@ inquirer.prompt([
         type: "input",
         message: "What is your Github username?",
     },
+    {
+        name: "email",
+        type: "input",
+        message: "What is your email address?",
+    },
+    
     // {
     //     name: "email",
     //     type: "input",
@@ -20,7 +26,7 @@ inquirer.prompt([
 ])
 
     .then((answer) => {
-        console.log("Hello " + answer.username);
+        console.log(answer.email);
     });
 
 
