@@ -1,43 +1,48 @@
-const fs = require("fs");
-const util = require("util");
-const axios = require("axios");
-const inquirer = require('inquirer');
+const inquirer = require("inquirer");
+// const fs = require("fs");
+// const util = require("util");
+// const axios = require("axios");
 
 
-inquirer
-.prompt([
+inquirer.prompt([
     {
-    type: "input",
-        message: 'What is your Github username?',
-        name: 'username',
-    },
-    {
+        name: "username",
         type: "input",
-        message: "What is your email address?",
-        name: "email"
-    }
+        message: "What is your Github username?",
+    },
+    // {
+    //     name: "email",
+    //     type: "input",
+    //     message: "What is your email address?",
+    // },
 
     
 ])
 
-   .then(function({ username }) {
-       const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+    .then((answer) => {
+        console.log("Hello " + answer.username);
+    });
+
+
+
+//    .then(function({ username }) {
+//        const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
        
-       axios.get(queryUrl).then((function(res) {
-           const repoNames = res.data.map(function(repo) {
-               return repo.name;
-           });
+//        axios.get(queryUrl).then((function(res) {
+//            const repoNames = res.data.map(function(repo) {
+//                return repo.name;
+//            });
 
    
-   const repoNamesStr = repoNames.join("\n");
+//    const repoNamesStr = repoNames.join("\n");
 
-      fs.writeFile("repos.txt", repoNamesStr, function(err) {
-        if (err) {
-          throw err;
-        }
+//       fs.writeFile("repos.txt", repoNamesStr, function(err) {
+//         if (err) {
+//           throw err;
+//         }
 
-        console.log(`Saved ${repoNames.length} repos`);
-      });
+//         console.log(`Saved ${repoNames.length} repos`);
+//       });
     
   
 
