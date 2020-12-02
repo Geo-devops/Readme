@@ -31,89 +31,41 @@ inquirer.prompt([
         message: "A short description of your project?",
     },
     {
-        name: "email",
-        type: "input",
-        message: "What kind of license should your project have?",
+        name: "license",
+        type: "list",
+        message: "What kind of license should your project have:",
+        choices: ["NONE", "BSD 3", "Apache 2.0"],
     },
     {
-        name: "command",
+        name: "install",
         type: "input",
         message: "What command should be run to install dependencies?",
+    },
+    {
+        name: "information",
+        type: "input",
+        message: "What does the user need to know about using the reop?",
+    },
+    {
+        name: "contributing",
+        type: "input",
+        message: "What does user need to know about contributing to the repo?",
     }
-
-    // {
-    //     name: "email",
-    //     type: "input",
-    //     message: "What is your email address?",
-    // },
 
     
 ])
 
     .then((answer) => {
-        console.log(answer.description);
+        console.log(answer.license);
+        // fs.writeFileSync("ReadMe.md", inquirerResponse, data);
+    })
+    .catch(error => {
+        if(error.isTtyError) {
+
+        } else {
+
+        }
     });
 
 
 
-//    .then(function({ username }) {
-//        const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
-       
-//        axios.get(queryUrl).then((function(res) {
-//            const repoNames = res.data.map(function(repo) {
-//                return repo.name;
-//            });
-
-   
-//    const repoNamesStr = repoNames.join("\n");
-
-//       fs.writeFile("repos.txt", repoNamesStr, function(err) {
-//         if (err) {
-//           throw err;
-//         }
-
-//         console.log(`Saved ${repoNames.length} repos`);
-//       });
-    
-  
-
-
-
-
-// let promptuser = () => {
-//     return inquirer.prompt([
-//         {
-
-//             type: "input",
-//             name: 'name',
-//             message: 'What is your Github username?',
-//         },
-//         {   name: 'email',
-//             message: 'What is your email address?',
-        
-//     },
-      
-//     {       type: "input",
-//             name: 'project name',
-//             message: 'What is your project name?'
-//     },
-//         {   type: "input",    
-//             name: 'licesne',
-//             message: 'What kind of license should your repo have?'
-//     },
-//     {       type: "input",
-//             name: '',
-//             message: 'What command should be run to install dependancies?'
-//     },
-//      {      type: "input",
-//             name: '',
-//             message: 'What does your user need to know about using the repo?'
-//      },
-
-
-//      {      type: "input",
-//             name: '',
-//             message: 'what does your user need to know about contribution to the repo?'
-//         },   
-//     ]);
-// };
