@@ -20,16 +20,30 @@ inquirer
     
 ])
 
-   .then(({ username, email }) => {
-    console.log('email:' email);
+   .then(function({ username }) {
+       const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
+       
+       axios.get(queryUrl).then((function(res) {
+           const repoNames = res.data.map(function(repo) {
+               return repo.name;
+           });
+
+   
+   const repoNamesStr = repoNames.join("\n");
+
+      fs.writeFile("repos.txt", repoNamesStr, function(err) {
+        if (err) {
+          throw err;
+        }
+
+        console.log(`Saved ${repoNames.length} repos`);
+      });
+    
+  
 
 
-    const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
 
-    axios.get(queryUrl).then(res => {
-        const repoNames = res.data.map(function(repo) {})
-    })
-}
+
 // let promptuser = () => {
 //     return inquirer.prompt([
 //         {
@@ -67,21 +81,3 @@ inquirer
 //         },   
 //     ]);
 // };
-    
-
-promptuser()
-.then(answers => {
-    const message
-})
-
-// function to write README file
-function writeToFile(fileName, data) {
-}
-
-// function to initialize program
-function init() {
-
-}
-
-// function call to initialize program
-init();
