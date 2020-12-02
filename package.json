@@ -1,0 +1,24 @@
+{
+  "name": "readme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgettebondarek/Readme.git"
+  },
+  "author": "Georgette Bondarek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgettebondarek/Readme/issues"
+  },
+  "homepage": "https://github.com/georgettebondarek/Readme#readme",
+  "dependencies": {
+    "i": "^0.3.6",
+    "inquirer": "^7.3.3",
+    "npm": "^6.14.9"
+  }
+}
