@@ -15,7 +15,32 @@ inquirer.prompt([
         type: "input",
         message: "What is your email address?",
     },
-    
+    {
+        name: "projectName",
+        type: "input",
+        message: "What is the title of your project?",
+    },
+    {
+        name: "email",
+        type: "input",
+        message: "What is your email address?",
+    },
+    {
+        name: "description",
+        type: "input",
+        message: "A short description of your project?",
+    },
+    {
+        name: "email",
+        type: "input",
+        message: "What kind of license should your project have?",
+    },
+    {
+        name: "command",
+        type: "input",
+        message: "What command should be run to install dependencies?",
+    }
+
     // {
     //     name: "email",
     //     type: "input",
@@ -26,7 +51,7 @@ inquirer.prompt([
 ])
 
     .then((answer) => {
-        console.log(answer.email);
+        console.log(answer.description);
     });
 
 
