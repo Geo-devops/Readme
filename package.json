@@ -10,15 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/georgettebondarek/Readme.git"
   },
-  "author": "Georgette Bondarek",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/georgettebondarek/Readme/issues"
   },
   "homepage": "https://github.com/georgettebondarek/Readme#readme",
   "dependencies": {
-    "i": "^0.3.6",
-    "inquirer": "^7.3.3",
-    "npm": "^6.14.9"
+    "inquirer": "^7.3.3"
   }
 }

@@ -1,14 +1,12 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const util = require("util");
-const generateReadme = require('./utils/generatemarkdowns')
-const writeFileAsync = util.promisify(writeToFile);
+
+const path = require("path")
+
 
 const generateMarkdowns = require('./utils/generateMarkdowns.js')
 
-
-
-
+  
 const questions = [
     {
         name: "username",
@@ -39,7 +37,16 @@ const questions = [
         name: "license",
         type: "list",
         message: "What kind of license should your project have:",
-        choices: ["NONE", "BSD 3", "Apache 2.0"],
+        choices: [
+        {
+            name: "NONE", 
+            value: "NONE"
+        }, 
+        { 
+            name: "BSD 3",
+            value: "BSD%203"
+        }
+        ]   
     },
     {
         name: "install",
@@ -58,42 +65,17 @@ const questions = [
     },
 ];
 
+
+function writeToFile (fileName, data) {
+   return fs.writeFileSync(path.join(__dirname, fileName), data)
+}
+
+function init() {
+    inquirer.prompt(questions).then(function(answers) {
+        writeToFile("README.md", generateMarkdowns({...answers}))
+    })
+}
     
 
-    // .then((answer) => {
-    //     console.log(answer.license);
-    //     // fs.writeFileSync("ReadMe.md", inquirerResponse, data);
-    // })
-
-    function writeToFile (fileName, data) {
-        fs.writeFile (fileName, data, 'utf8', function (err) {
-            if (err) {
-                console.log (err);
-            }
-            console.log("Please wait your readme is being composed")
-        });
-    }
-
-
-        async function init() {
-            try{
-                const userResponse = await inquirer.prompt(questions);
-                const markdown = generateMarkdowns(userResponse, userInfo);
-
-                await writeFileAsync('exampleReadMe.md', markdown);
-                
-            } catch (error) {
-                // console.log(error);
-            }
-        };
-        init()
-        // const init = new Promise(function(resolve,reject) {
-        //     resolve(inquirer.prompt(question))
-        // })
-
-        // init.then(writeToFile("test.md", readme)
-//     inquirer.prompt(questions).then(answer => {writeToFile('test.md', readme(answer))
-// });
-
-
+init()
 
