@@ -9,6 +9,7 @@ function generateMarkdowns(data) {
   * [License](#License)
   * [Contribution](#Contributing)
   * [Questions](#Questions)
+  * [Tests] (#Tests)
   
 
 
